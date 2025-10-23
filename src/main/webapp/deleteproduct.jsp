@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Delete Product</title>
 </head>
 <body>
     <p>Below product will be deleted:</p>
