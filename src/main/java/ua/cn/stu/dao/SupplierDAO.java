@@ -95,9 +95,11 @@ public class SupplierDAO {
     }
 
     public List<Supplier> getSuppliersByGoodsName(String goodsName) {
-        String hql = "select distinct supp from Supplier supp join supp.goodsSet goods where goods.name = :goodsName";
+        String hql = "select distinct supp from Supplier supp " +
+                     "join supp.goodsSet goods " +
+                     "where lower(goods.name) LIKE lower(:goodsName)";
         Query<Supplier> query = session.createQuery(hql, Supplier.class);
-        query.setParameter("goodsName", goodsName);
+        query.setParameter("goodsName", "%" + goodsName + "%");
         return query.list();
     }
 

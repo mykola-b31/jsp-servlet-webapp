@@ -50,7 +50,6 @@ public class HibernateDAOFactory {
                 configuration.setProperty("hibernate.show_sql", "true");
                 configuration.setProperty("hibernate.format_sql", "true");
 
-                configuration.addAnnotatedClass(Product.class);
                 configuration.addAnnotatedClass(Goods.class);
                 configuration.addAnnotatedClass(Supplier.class);
 
