@@ -8,12 +8,12 @@ import java.util.List;
 
 public class SupplierListDatabean {
     public List<Supplier> supplierList;
-    private String goodsNameSearch;
+    private String searchTerm;
 
     public SupplierListDatabean() {}
 
-    public void setGoodsNameSearch(String goodsNameSearch) {
-        this.goodsNameSearch = goodsNameSearch;
+    public void setSearchTerm(String searchTerm) {
+        this.searchTerm = searchTerm;
     }
 
     public List<Supplier> getSupplierList() {
@@ -21,8 +21,8 @@ public class SupplierListDatabean {
             return supplierList;
         }
 
-        if (goodsNameSearch != null && !goodsNameSearch.trim().isEmpty()) {
-            supplierList = HibernateDAOFactory.getInstance().getSupplierDAO().getSuppliersByGoodsName(goodsNameSearch);
+        if (searchTerm != null && !searchTerm.trim().isEmpty()) {
+            supplierList = HibernateDAOFactory.getInstance().getSupplierDAO().searchSuppliersByAnyField(searchTerm);
         } else {
             supplierList = HibernateDAOFactory.getInstance().getSupplierDAO().getAllSuppliers();
         }

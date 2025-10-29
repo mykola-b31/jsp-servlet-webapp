@@ -125,4 +125,18 @@ public class SupplierDAO {
         return query.list();
     }
 
+    public List<Supplier> searchSuppliersByAnyField(String searchTerm) {
+        String hql = "SELECT DISTINCT s from Supplier s " +
+                "LEFT JOIN s.goodsSet g " +
+                "WHERE lower(s.name) LIKE lower(:term) " +
+                "OR lower(s.contact) LIKE lower(:term) " +
+                "OR lower(s.address) LIKE lower(:term) " +
+                "OR lower(s.specialization) LIKE lower(:term) " +
+                "OR lower(g.name) LIKE lower(:term)";
+
+        Query<Supplier> query = session.createQuery(hql, Supplier.class);
+        query.setParameter("term", "%" + searchTerm + "%");
+        return query.list();
+    }
+
 }

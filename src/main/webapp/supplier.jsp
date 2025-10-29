@@ -32,14 +32,14 @@
 </nav>
 <jsp:useBean id="supplierListBean"
              class="ua.cn.stu.databean.SupplierListDatabean">
-    <jsp:setProperty name="supplierListBean" property="goodsNameSearch" value="${param.goodsNameSearch}" />
+    <jsp:setProperty name="supplierListBean" property="searchTerm" value="${param.searchTerm}" />
 </jsp:useBean>
 <h1>Supplier Page</h1>
 <c:url var="supplierPageUrl" value="/supplier.jsp" />
 <form method="get" action="${supplierPageUrl}" style="background-color: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 2px 3px rgba(0,0,0,0.1); margin-bottom: 20px;">
-    <input type="text" name="goodsNameSearch"
-           placeholder="Пошук постачальника за назвою товару..."
-           value="${param.goodsNameSearch}"
+    <input type="text" name="searchTerm"
+           placeholder="Пошук постачальника..."
+           value="${param.serchTerm}"
            style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
     <input type="submit" value="Search" style="background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
     <input type="button" onclick="window.location.href='${supplierPageUrl}'" value="Clear" style="background-color: #6c757d; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
